@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "Astronomy Picture of the Day",
+  name: "Landing",
   props: {
     msg: String
   }
