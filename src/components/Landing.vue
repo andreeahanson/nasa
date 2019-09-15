@@ -1,12 +1,12 @@
 <template>
-  <div class="hello">
+  <div class="landing">
     <h1>Welcome to the Astronomy Picture of the Day!</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "Astronomy Picture of the Day",
   props: {
     msg: String
   }
