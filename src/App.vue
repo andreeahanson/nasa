@@ -2,7 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/day">Picture of the Day</router-link> |
+      <router-link to="/month">Pictures of the Month</router-link>
     </div>
     <router-view />
   </div>
@@ -26,6 +27,6 @@
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #4e8ce9;
 }
 </style>

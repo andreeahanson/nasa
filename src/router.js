@@ -12,13 +12,26 @@ export default new Router({
       component: Home
     },
     {
-      path: "/about",
-      name: "about",
+      path: "/day",
+      name: "Picture of the Day",
       // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
+      // this generates a separate chunk (Picture of the Day".[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+        import(
+          /* webpackChunkName: "Picture of the Day"" */ "./views/PictureOfTheDay.vue"
+        )
+    },
+    {
+      path: "/month",
+      name: "Pictures of the Month",
+      // route level code-splitting
+      // this generates a separate chunk (Pictures of the Month".[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () =>
+        import(
+          /* webpackChunkName: "Pictures of the Month"" */ "./views/PicturesOfTheMonth.vue"
+        )
     }
   ]
 });
