@@ -39,6 +39,11 @@ export default {
 .day {
   background: red;
 }
+img {
+    height: 400px;
+    width: 400px;
+  }
+
 </style>
 
 
