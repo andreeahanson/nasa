@@ -9,7 +9,7 @@
     </form>
        <div class="day" v-if="this.dailyPicture.date">
     <h2>{{this.dailyPicture.date}}</h2>
-    <img v-bind:src="`${this.dailyPicture.hdurl}`" alt="nasa-picture-of-the-day" />
+    <img class="nasa-pic" v-bind:src="`${this.dailyPicture.hdurl}`" alt="nasa-picture-of-the-day" />
     <p>{{this.dailyPicture.explanation}}</p>
     </div>
     <div v-else>
@@ -44,15 +44,18 @@ export default {
     };
   },
   methods: {
-    sendDate($event) {
-      this.$emit("set-date", $event);
-    },
     async selectDate($event) {
       let date = $event.target.value;
       let picture = await fetchPictureOfTheMonth(date);
       this.dailyPicture = picture;
-      console.log(this.dailyPicture)
     }
   }
 };
 </script>
+
+<style scoped>
+.nasa-pic {
+    height: 400px;
+    width: 400px;
+  }
+</style>
