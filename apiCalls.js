@@ -1,4 +1,4 @@
-import { API_KEY } from "./.env";
+import { API_KEY } from "./apiKeys";
 
 export const fetchPictureOfTheDay = async () => {
   const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
