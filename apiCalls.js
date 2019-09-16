@@ -16,6 +16,7 @@ export const fetchPictureOfTheDay = async () => {
 
 export const fetchPictureOfTheMonth = async date => {
   const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`;
+  console.log(url)
   try {
     const response = await fetch(url);
     if (!response.ok) {
