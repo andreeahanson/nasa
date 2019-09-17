@@ -1,6 +1,9 @@
-import { API_KEY } from "./apiKeys";
+require("dotenv").config();
+
+const API_KEY = process.env.VUE_APP_API_KEY;
 
 export const fetchPictureOfTheDay = async () => {
+  console.log(API_KEY)
   const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
   try {
     const response = await fetch(url);
