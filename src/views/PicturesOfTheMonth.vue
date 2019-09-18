@@ -1,6 +1,5 @@
 <template>
-  <div class="month-container">
-    <!-- <PreviousDatesPictures v-bind:dates="dates"/>  -->
+  <div v-if="expand === false" class="month-container">
     <form>
       <select class="date" @change="selectDate($event)">
         <option value>Select a date</option>
@@ -9,17 +8,34 @@
     </form>
     <div class="day" v-if="this.dailyPicture.date">
       <h3>{{this.dailyPicture.title}}</h3>
-      <img class="nasa-pic" v-bind:src="`${this.dailyPicture.hdurl}`" alt="nasa-picture-of-the-day" />
+      <img
+        class="nasa-pic"
+        v-if="dailyPicture.media_type === 'image'"
+        :src="dailyPicture.url"
+        :alt="dailyPicture.title"
+        @click="toggleExpand"
+      />
+      <iframe v-else type="text/html" :src="dailyPicture.url"></iframe>
       <br />
-      <small>Copyright: {{this.dailyPicture.copyright}}</small>
+      <small v-if="this.dailyPicture.copyright">Copyright: {{this.dailyPicture.copyright}}</small>
+      <small v-else></small>
       <p>{{this.dailyPicture.explanation}}</p>
     </div>
     <div v-else></div>
   </div>
+  <div v-else>
+        <img
+        class="large"
+        v-if="dailyPicture.media_type === 'image'"
+        :src="dailyPicture.url"
+        :alt="dailyPicture.title"
+        @click="toggleExpand"
+      />
+      <iframe v-else type="text/html" :src="dailyPicture.url"></iframe>
+  </div>
 </template>
 
 <script>
-import PreviousDatesPictures from "./PreviousDatesPictures";
 import { fetchPictureOfTheMonth } from "../../apiCalls";
 
 export default {
@@ -37,11 +53,11 @@ export default {
     for (i = 1; i < day; i++) {
       text += `${yearMonth}${i},`;
     }
-    // return text
     let allDates = text.split(",");
     return {
       dates: allDates,
-      dailyPicture: {}
+      dailyPicture: {},
+      expand: false
     };
   },
   methods: {
@@ -49,6 +65,9 @@ export default {
       let date = $event.target.value;
       let picture = await fetchPictureOfTheMonth(date);
       this.dailyPicture = picture;
+    },
+    toggleExpand() {
+      this.expand = !this.expand
     }
   }
 };
@@ -56,9 +75,13 @@ export default {
 
 <style scoped>
 .nasa-pic {
-  height: auto;
   height: 60%;
   width: 30%;
+  cursor: pointer;
+}
+iframe {
+  height: 250px;
+  width: 330px;
 }
 .align-vertically {
   display: flex;
@@ -96,6 +119,11 @@ p {
   margin: 15%;
   font-size: 1.1rem;
   background: white;
-  box-shadow:inset 0 0 3px 3px;
+  box-shadow: inset 0 0 3px 3px;
+}
+.large {
+  margin-top: 3px;
+  width: 100%;
+  height: auto;
 }
 </style>
