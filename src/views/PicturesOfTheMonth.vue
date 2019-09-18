@@ -1,6 +1,5 @@
 <template>
   <div v-if="expand === false" class="month-container">
-    <!-- <PreviousDatesPictures v-bind:dates="dates"/>  -->
     <form>
       <select class="date" @change="selectDate($event)">
         <option value>Select a date</option>
@@ -9,7 +8,6 @@
     </form>
     <div class="day" v-if="this.dailyPicture.date">
       <h3>{{this.dailyPicture.title}}</h3>
-      <!-- <img class="nasa-pic" v-bind:src="`${this.dailyPicture.hdurl}`" alt="nasa-picture-of-the-day" /> -->
       <img
         class="nasa-pic"
         v-if="dailyPicture.media_type === 'image'"
@@ -38,7 +36,6 @@
 </template>
 
 <script>
-import PreviousDatesPictures from "./PreviousDatesPictures";
 import { fetchPictureOfTheMonth } from "../../apiCalls";
 
 export default {
@@ -56,7 +53,6 @@ export default {
     for (i = 1; i < day; i++) {
       text += `${yearMonth}${i},`;
     }
-    // return text
     let allDates = text.split(",");
     return {
       dates: allDates,
