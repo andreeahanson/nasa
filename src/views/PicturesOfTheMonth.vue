@@ -2,7 +2,7 @@
   <div class="month-container">
     <!-- <PreviousDatesPictures v-bind:dates="dates"/>  -->
     <form>
-      <select @change="selectDate($event)">
+      <select class="date" @change="selectDate($event)">
         <option value>Select a date</option>
         <option v-for="(date, index) in dates" v-bind:value="date" :key="index">{{ date }}</option>
       </select>
@@ -82,15 +82,17 @@ p {
   padding: 10px;
   height: 30%;
 }
-select {
-  margin: 15px;
-  margin-bottom: 25px;
-}
 .month-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgb(252, 250, 250);
   padding-bottom: 3%;
+}
+.date {
+  margin: 15%;
+  font-size: 1.1rem;
+  background: white;
+  box-shadow:inset 0 0 3px 3px;
 }
 </style>
