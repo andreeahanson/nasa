@@ -9,7 +9,14 @@
     </form>
     <div class="day" v-if="this.dailyPicture.date">
       <h3>{{this.dailyPicture.title}}</h3>
-      <img class="nasa-pic" v-bind:src="`${this.dailyPicture.hdurl}`" alt="nasa-picture-of-the-day" />
+      <!-- <img class="nasa-pic" v-bind:src="`${this.dailyPicture.hdurl}`" alt="nasa-picture-of-the-day" /> -->
+      <img
+        class="nasa-pic"
+        v-if="dailyPicture.media_type === 'image'"
+        :src="dailyPicture.url"
+        :alt="dailyPicture.title"
+      />
+      <iframe v-else type="text/html" width="320" height="240" :src="dailyPicture.url"></iframe>
       <br />
       <small>Copyright: {{this.dailyPicture.copyright}}</small>
       <p>{{this.dailyPicture.explanation}}</p>
@@ -59,6 +66,7 @@ export default {
   height: auto;
   height: 60%;
   width: 30%;
+  cursor: pointer;
 }
 .align-vertically {
   display: flex;
@@ -96,6 +104,6 @@ p {
   margin: 15%;
   font-size: 1.1rem;
   background: white;
-  box-shadow:inset 0 0 3px 3px;
+  box-shadow: inset 0 0 3px 3px;
 }
 </style>

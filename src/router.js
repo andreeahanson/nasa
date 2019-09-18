@@ -32,6 +32,17 @@ export default new Router({
         import(
           /* webpackChunkName: "Pictures of the Month"" */ "./views/PicturesOfTheMonth.vue"
         )
+    },
+    {
+      path: "/poster",
+      name: "Poster Picture",
+      // route level code-splitting
+      // this generates a separate chunk (Pictures of the Month".[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () =>
+        import(
+          /* webpackChunkName: "Pictures of the Month"" */ "./views/Poster.vue"
+        )
     }
   ]
 });
