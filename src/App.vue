@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/day">Picture of the Day</router-link> |
+      <router-link to="/">Home</router-link>
+      <router-link to="/day">Picture of the Day</router-link>
       <router-link to="/month">Pictures of the Month</router-link>
     </div>
     <router-view />
@@ -20,15 +20,20 @@
   color: #2c3e50;
 }
 #nav {
-  padding: 30px;
+  padding: 10px;
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: space-around;
 }
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: white;
+  text-decoration: none;
 }
 
 #nav a.router-link-exact-active {
-  color: #4e8ce9;
+  color: #6295e2;
 }
 </style>
