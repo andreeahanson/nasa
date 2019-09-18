@@ -88,6 +88,7 @@ p {
   align-items: center;
   background-color: rgb(252, 250, 250);
   padding-bottom: 3%;
+  height: 87vh;
 }
 .date {
   margin: 15%;
