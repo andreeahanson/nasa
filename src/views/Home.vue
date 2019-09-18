@@ -24,7 +24,7 @@ export default {
 <style scoped>
 .nasa-logo {
   height: auto;
-  width: 100%;
+  width: 80%;
 }
 .home {
   display: flex;

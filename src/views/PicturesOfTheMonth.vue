@@ -10,6 +10,8 @@
     <div class="day" v-if="this.dailyPicture.date">
       <h3>{{this.dailyPicture.title}}</h3>
       <img class="nasa-pic" v-bind:src="`${this.dailyPicture.hdurl}`" alt="nasa-picture-of-the-day" />
+      <br />
+      <small>Copyright: {{this.dailyPicture.copyright}}</small>
       <p>{{this.dailyPicture.explanation}}</p>
     </div>
     <div v-else></div>
@@ -88,7 +90,7 @@ p {
   align-items: center;
   background-color: rgb(252, 250, 250);
   padding-bottom: 3%;
-  height: 87vh;
+  height: 86vh;
 }
 .date {
   margin: 15%;
