@@ -1,5 +1,5 @@
 <template>
-  <div class="month-container">
+  <div v-if="expand === false" class="month-container">
     <!-- <PreviousDatesPictures v-bind:dates="dates"/>  -->
     <form>
       <select class="date" @change="selectDate($event)">
@@ -15,6 +15,7 @@
         v-if="dailyPicture.media_type === 'image'"
         :src="dailyPicture.url"
         :alt="dailyPicture.title"
+        @click="toggleExpand"
       />
       <iframe v-else type="text/html" :src="dailyPicture.url"></iframe>
       <br />
@@ -23,6 +24,16 @@
       <p>{{this.dailyPicture.explanation}}</p>
     </div>
     <div v-else></div>
+  </div>
+  <div v-else>
+        <img
+        class="large"
+        v-if="dailyPicture.media_type === 'image'"
+        :src="dailyPicture.url"
+        :alt="dailyPicture.title"
+        @click="toggleExpand"
+      />
+      <iframe v-else type="text/html" :src="dailyPicture.url"></iframe>
   </div>
 </template>
 
@@ -49,7 +60,8 @@ export default {
     let allDates = text.split(",");
     return {
       dates: allDates,
-      dailyPicture: {}
+      dailyPicture: {},
+      expand: false
     };
   },
   methods: {
@@ -57,6 +69,9 @@ export default {
       let date = $event.target.value;
       let picture = await fetchPictureOfTheMonth(date);
       this.dailyPicture = picture;
+    },
+    toggleExpand() {
+      this.expand = !this.expand
     }
   }
 };
@@ -109,5 +124,10 @@ p {
   font-size: 1.1rem;
   background: white;
   box-shadow: inset 0 0 3px 3px;
+}
+.large {
+  margin-top: 3px;
+  width: 100%;
+  height: auto;
 }
 </style>

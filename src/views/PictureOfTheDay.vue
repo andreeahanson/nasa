@@ -1,6 +1,6 @@
 
 <template>
-  <div class="container">
+  <div v-if="expand === false" class="container">
     <div class="day">
       <h3>{{this.picOfTheDay.title}}</h3>
       <span class="pic-of-day">
@@ -17,12 +17,23 @@
         v-if="picOfTheDay.media_type === 'image'"
         :src="picOfTheDay.url"
         :alt="picOfTheDay.title"
+        @click="toggleExpand"
       />
       <iframe v-else type="text/html" :src="picOfTheDay.url"></iframe>
       <br />
       <small>Copyright: {{this.picOfTheDay.copyright}}</small>
       <p>{{this.picOfTheDay.explanation}}</p>
     </div>
+  </div>
+  <div v-else>
+    <img
+      class="large"
+      v-if="picOfTheDay.media_type === 'image'"
+      :src="picOfTheDay.url"
+      :alt="picOfTheDay.title"
+      @click="toggleExpand"
+    />
+    <iframe v-else type="text/html" :src="picOfTheDay.url"></iframe>
   </div>
 </template>
 
@@ -46,8 +57,14 @@ export default {
         // service_version: "v1",
         // title: "A Long Storm System on Saturn",
         // url: "https://apod.nasa.gov/apod/image/1909/longstorm_cassini_960.jpg"
-      }
+      },
+      expand: false
     };
+  },
+  methods: {
+    toggleExpand() {
+      this.expand = !this.expand;
+    }
   },
   async created() {
     let picture = await fetchPictureOfTheDay();
@@ -99,5 +116,10 @@ p {
   /* color: rgb(27, 27, 158); */
   font-size: 30px;
   text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
+}
+.large {
+  margin-top: 3px;
+  width: 100%;
+  height: auto;
 }
 </style>
