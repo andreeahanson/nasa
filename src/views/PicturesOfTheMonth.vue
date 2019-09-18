@@ -40,9 +40,6 @@ import { fetchPictureOfTheMonth } from "../../apiCalls";
 
 export default {
   name: "PicturesOfTheMonth",
-  components: {
-    PreviousDatesPictures
-  },
   data() {
     let todayDate = new Date().toISOString().slice(0, 10);
     let yearMonth = todayDate.slice(0, 8);
