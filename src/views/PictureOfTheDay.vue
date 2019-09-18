@@ -18,7 +18,7 @@
         :src="picOfTheDay.url"
         :alt="picOfTheDay.title"
       />
-      <iframe v-else type="text/html" width="320" height="240" :src="picOfTheDay.url"></iframe>
+      <iframe v-else type="text/html" :src="picOfTheDay.url"></iframe>
       <br />
       <small>Copyright: {{this.picOfTheDay.copyright}}</small>
       <p>{{this.picOfTheDay.explanation}}</p>
@@ -58,10 +58,13 @@ export default {
 
 <style scoped>
 .nasa-pic {
-  height: auto;
   height: 60%;
   width: 30%;
   cursor: pointer;
+}
+iframe {
+  height: 250px;
+  width: 330px;
 }
 h3 {
   margin: 0px;

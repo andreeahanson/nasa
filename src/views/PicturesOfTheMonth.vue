@@ -16,9 +16,10 @@
         :src="dailyPicture.url"
         :alt="dailyPicture.title"
       />
-      <iframe v-else type="text/html" width="320" height="240" :src="dailyPicture.url"></iframe>
+      <iframe v-else type="text/html" :src="dailyPicture.url"></iframe>
       <br />
-      <small>Copyright: {{this.dailyPicture.copyright}}</small>
+      <small v-if="this.dailyPicture.copyright">Copyright: {{this.dailyPicture.copyright}}</small>
+      <small v-else></small>
       <p>{{this.dailyPicture.explanation}}</p>
     </div>
     <div v-else></div>
@@ -63,10 +64,13 @@ export default {
 
 <style scoped>
 .nasa-pic {
-  height: auto;
   height: 60%;
   width: 30%;
   cursor: pointer;
+}
+iframe {
+  height: 250px;
+  width: 330px;
 }
 .align-vertically {
   display: flex;
