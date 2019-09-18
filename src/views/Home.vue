@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <img class="nasa-logo" alt="NASA logo" src="https://defaeroreport.com/wp-content/uploads/2019/07/nasa-logo-web-rgb.png" />
+    <img
+      class="nasa-logo"
+      alt="NASA logo"
+      src="https://defaeroreport.com/wp-content/uploads/2019/07/nasa-logo-web-rgb.png"
+    />
     <Landing msg="Welcome to Your Vue.js App" />
   </div>
 </template>
@@ -18,8 +22,15 @@ export default {
 </script>
 
 <style scoped>
-  .nasa-logo {
-    height: 300px;
-    width: 600px;
-  }
+.nasa-logo {
+  height: auto;
+  width: 80%;
+}
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(252, 250, 250);
+  height: 91vh;
+}
 </style>

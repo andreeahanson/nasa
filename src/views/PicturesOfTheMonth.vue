@@ -1,19 +1,20 @@
 <template>
-  <div>
+  <div class="month-container">
     <!-- <PreviousDatesPictures v-bind:dates="dates"/>  -->
     <form>
-      <select v-model="selected" @change="selectDate($event)">
-        <option disabled value>Select a date</option>
+      <select class="date" @change="selectDate($event)">
+        <option value>Select a date</option>
         <option v-for="(date, index) in dates" v-bind:value="date" :key="index">{{ date }}</option>
       </select>
     </form>
-       <div class="day" v-if="this.dailyPicture.date">
-    <h2>{{this.dailyPicture.date}}</h2>
-    <img class="nasa-pic" v-bind:src="`${this.dailyPicture.hdurl}`" alt="nasa-picture-of-the-day" />
-    <p>{{this.dailyPicture.explanation}}</p>
+    <div class="day" v-if="this.dailyPicture.date">
+      <h3>{{this.dailyPicture.title}}</h3>
+      <img class="nasa-pic" v-bind:src="`${this.dailyPicture.hdurl}`" alt="nasa-picture-of-the-day" />
+      <br />
+      <small>Copyright: {{this.dailyPicture.copyright}}</small>
+      <p>{{this.dailyPicture.explanation}}</p>
     </div>
-    <div v-else>
-    </div>
+    <div v-else></div>
   </div>
 </template>
 
@@ -55,7 +56,46 @@ export default {
 
 <style scoped>
 .nasa-pic {
-    height: 400px;
-    width: 400px;
-  }
+  height: auto;
+  height: 60%;
+  width: 30%;
+}
+.align-vertically {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+  height: 15vh;
+}
+.day {
+  padding: 10px;
+  width: 80%;
+  height: 74vh;
+  margin-top: 0.5em;
+  overflow: scroll;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+h3 {
+  margin: 0px;
+  height: 8%;
+}
+p {
+  font-size: 13px;
+  padding: 10px;
+  height: 30%;
+}
+.month-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(252, 250, 250);
+  padding-bottom: 3%;
+  height: 86vh;
+}
+.date {
+  margin: 15%;
+  font-size: 1.1rem;
+  background: white;
+  box-shadow:inset 0 0 3px 3px;
+}
 </style>
